@@ -13,6 +13,10 @@
 
 `parser/defgraphql` works ok, but `core/query-map` produces an empty map. 
 
-On further investigation, it is the call to `cuerdas/kebab` that fails. 
+It is the call to `cuerdas/kebab` that fails, due to `goog.nodeGlobalRequire` is not a
 
-It depends on an external library `xregexp` 
+The problem can be fixed by removing `:target :nodejs` from compiler options, 
+however this breaks other things on larger projects (reagent 0.8/react 16 compatability)
+
+
+
